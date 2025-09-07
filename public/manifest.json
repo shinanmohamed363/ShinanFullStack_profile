@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Najimudeen Sanan",
+  "name": "Najimudeen Mohammed Sanan - Full-Stack Software Engineer",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,8 +18,10 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#0A0A0F",
+  "background_color": "#1A1A2E",
+  "description": "Full-Stack Software Engineer with 2.8+ years experience in MERN, Python, AI/ML. Premium portfolio showcasing industrial and personal projects.",
+  "categories": ["business", "productivity", "portfolio"]
 }
