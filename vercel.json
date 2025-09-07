@@ -1,6 +1,11 @@
 {
   "version": 2,
   "name": "najimudeen-sanan-portfolio",
+  "functions": {
+    "app/api/**/*.js": {
+      "runtime": "nodejs22.x"
+    }
+  },
   "builds": [
     {
       "src": "package.json",
