@@ -11,6 +11,11 @@ const Navigation: React.FC<NavigationProps> = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
       
+      // Close mobile menu on scroll
+      if (isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+      
       // Update active section based on scroll position
       const sections = ['hero', 'about', 'skills', 'projects', 'experience', 'contact'];
       const currentSection = sections.find(section => {
@@ -27,14 +32,43 @@ const Navigation: React.FC<NavigationProps> = () => {
       }
     };
 
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isMobileMenuOpen) {
+        const target = event.target as HTMLElement;
+        const nav = document.querySelector('nav');
+        if (nav && !nav.contains(target)) {
+          setIsMobileMenuOpen(false);
+        }
+      }
+    };
+
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    document.addEventListener('click', handleClickOutside);
+    document.addEventListener('keydown', handleEscapeKey);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, [isMobileMenuOpen]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const navHeight = 80; // Approximate navigation height
+      const elementPosition = element.offsetTop - navHeight;
+      
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      });
     }
     setIsMobileMenuOpen(false);
   };
@@ -50,8 +84,8 @@ const Navigation: React.FC<NavigationProps> = () => {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'glass-strong py-4' : 'py-6'
-    }`}>
+      isScrolled ? 'glass-strong py-3' : 'py-4'
+    }`} style={{zIndex: 9999}}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo/Name */}
@@ -93,7 +127,8 @@ const Navigation: React.FC<NavigationProps> = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden relative w-6 h-6 flex flex-col justify-center items-center"
+            className="md:hidden relative w-10 h-10 flex flex-col justify-center items-center glass rounded-lg p-2 hover:bg-white/10 active:bg-white/20 transition-all duration-300 touch-manipulation"
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           >
             <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${
               isMobileMenuOpen ? 'rotate-45 translate-y-0' : '-translate-y-1.5'
@@ -108,26 +143,36 @@ const Navigation: React.FC<NavigationProps> = () => {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`md:hidden transition-all duration-300 overflow-hidden ${
-          isMobileMenuOpen ? 'max-h-96 opacity-100 mt-6' : 'max-h-0 opacity-0'
+        <div className={`mobile-menu-container md:hidden transition-all duration-500 ease-in-out overflow-hidden ${
+          isMobileMenuOpen ? 'max-h-screen opacity-100 mt-6' : 'max-h-0 opacity-0 mt-0'
         }`}>
-          <div className="glass rounded-xl p-6 space-y-4">
-            {navItems.map((item) => (
+          <div className="glass-strong rounded-xl p-6 space-y-3 shadow-2xl border border-white/20">
+            {navItems.map((item, index) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`block w-full text-left px-4 py-3 rounded-lg transition-all duration-300 hover:bg-white/10 ${
+                className={`block w-full text-left px-6 py-4 rounded-lg transition-all duration-300 hover:bg-white/20 active:bg-white/30 text-lg font-medium touch-manipulation ${
                   activeSection === item.id 
-                    ? 'text-electric-cyan bg-white/5' 
-                    : 'text-white'
+                    ? 'text-electric-cyan bg-white/10 shadow-lg' 
+                    : 'text-white hover:text-electric-cyan'
                 }`}
+                style={{
+                  animationDelay: isMobileMenuOpen ? `${index * 50}ms` : '0ms',
+                  transform: isMobileMenuOpen ? 'translateX(0)' : 'translateX(-20px)',
+                  transition: 'all 0.3s ease-out'
+                }}
               >
-                {item.label}
+                <span className="flex items-center justify-between">
+                  {item.label}
+                  {activeSection === item.id && (
+                    <span className="w-2 h-2 bg-electric-cyan rounded-full animate-pulse"></span>
+                  )}
+                </span>
               </button>
             ))}
             <button
               onClick={() => scrollToSection('contact')}
-              className="w-full btn-primary mt-4"
+              className="w-full btn-primary mt-6 py-4 text-lg font-semibold touch-manipulation active:scale-95"
             >
               Get In Touch
             </button>
