@@ -182,7 +182,7 @@ const Experience: React.FC<ExperienceProps> = () => {
                     <div className="mb-6">
                       <h4 className="text-white font-semibold mb-4">Role & Responsibilities</h4>
                       <ul className="space-y-2">
-                        {exp.description.map((desc, idx) => (
+                        {exp.description.map((desc: string, idx: number) => (
                           <li key={idx} className="text-light-gray flex items-start">
                             <span className="text-electric-cyan mr-2 mt-1">▪</span>
                             {desc}
@@ -195,7 +195,7 @@ const Experience: React.FC<ExperienceProps> = () => {
                     <div className="mb-6">
                       <h4 className="text-white font-semibold mb-4">Key Achievements</h4>
                       <ul className="space-y-2">
-                        {exp.achievements.map((achievement, idx) => (
+                        {exp.achievements.map((achievement: string, idx: number) => (
                           <li key={idx} className="text-light-gray flex items-start">
                             <span className="text-neon-green mr-2 mt-1">✓</span>
                             {achievement}
@@ -208,7 +208,7 @@ const Experience: React.FC<ExperienceProps> = () => {
                     <div>
                       <h4 className="text-white font-semibold mb-4">Technologies & Tools</h4>
                       <div className="flex flex-wrap gap-2">
-                        {exp.technologies.map((tech) => (
+                        {exp.technologies.map((tech: string) => (
                           <span 
                             key={tech}
                             className="px-3 py-1 bg-glass-bg rounded-full text-sm text-light-gray hover:text-electric-cyan hover:bg-electric-cyan/10 transition-all duration-300 cursor-default"
