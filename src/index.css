@@ -335,6 +335,86 @@ code {
   #contact .space-y-6 > * + * {
     margin-top: 1rem;
   }
+  
+  /* CRITICAL: Force all sections to be visible with minimal padding */
+  #about, #skills, #projects, #experience, #contact {
+    padding: 20px 0 !important;
+    min-height: auto !important;
+  }
+  
+  /* About section specific fixes */
+  #about .space-y-8 > * + * {
+    margin-top: 1rem !important;
+  }
+  
+  #about .grid.lg\\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  #about .text-2xl {
+    font-size: 1.125rem !important;
+  }
+  
+  #about .text-xl {
+    font-size: 1rem !important;
+  }
+  
+  #about .text-lg {
+    font-size: 0.875rem !important;
+  }
+  
+  #about .grid.grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.5rem !important;
+  }
+  
+  #about .glass {
+    padding: 0.5rem !important;
+  }
+  
+  /* Projects section ultra compact */
+  #projects .space-y-8 > * + * {
+    margin-top: 1rem !important;
+  }
+  
+  #projects .grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+  
+  #projects .glass {
+    padding: 0.75rem !important;
+  }
+  
+  #projects .text-xl {
+    font-size: 1rem !important;
+  }
+  
+  #projects .text-lg {
+    font-size: 0.875rem !important;
+  }
+  
+  /* Experience section ultra compact */
+  #experience .space-y-8 > * + * {
+    margin-top: 1rem !important;
+  }
+  
+  #experience .space-y-6 > * + * {
+    margin-top: 0.75rem !important;
+  }
+  
+  #experience .glass {
+    padding: 0.75rem !important;
+  }
+  
+  #experience .text-xl {
+    font-size: 1rem !important;
+  }
+  
+  #experience .text-lg {
+    font-size: 0.875rem !important;
+  }
 }
 
 /* Ultra small screens (390x844 and similar) */
@@ -455,12 +535,12 @@ code {
   }
 }
 
-/* Extra small screens (375px and below) */
-@media (max-width: 375px) {
-  /* Even more compact layouts */
+/* Extra small screens - 375x667 iPhone SE and similar */
+@media (max-width: 375px), (max-height: 667px) and (max-width: 375px) {
+  /* EXTREME compact layouts for iPhone SE */
   section {
-    padding-top: 25px !important;
-    padding-bottom: 25px !important;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
   }
   
   .px-4 {
@@ -470,18 +550,19 @@ code {
   
   /* Hero ultra compact */
   #hero {
-    padding: 50px 0 25px 0;
+    padding: 40px 0 20px 0;
+    min-height: 90vh;
   }
   
   /* Hero name for very small screens */
   #hero h2 {
-    font-size: 1.5rem !important;
+    font-size: 1.25rem !important;
   }
   
   /* Profile image for very small screens */
   #hero .w-32.h-32 {
-    width: 4rem !important;
-    height: 4rem !important;
+    width: 3.5rem !important;
+    height: 3.5rem !important;
   }
   
   /* Button stack on very small screens */
@@ -493,11 +574,81 @@ code {
   /* Ultra small text */
   #hero p {
     font-size: 0.625rem !important;
+    line-height: 1.2;
   }
   
   .btn-primary, .btn-secondary {
-    padding: 6px 12px !important;
+    padding: 4px 8px !important;
     font-size: 0.625rem !important;
+  }
+  
+  /* CRITICAL: Extreme compression for all other sections */
+  #about, #skills, #projects, #experience, #contact {
+    padding: 10px 0 !important;
+  }
+  
+  /* Section titles extreme small */
+  .text-4xl, .text-5xl {
+    font-size: 1.25rem !important;
+    line-height: 1.2;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  /* All text sizes extreme small */
+  .text-2xl {
+    font-size: 1rem !important;
+  }
+  
+  .text-xl {
+    font-size: 0.875rem !important;
+  }
+  
+  .text-lg {
+    font-size: 0.75rem !important;
+  }
+  
+  .text-base {
+    font-size: 0.75rem !important;
+  }
+  
+  .text-sm {
+    font-size: 0.625rem !important;
+  }
+  
+  /* Glass cards extreme compact */
+  .glass {
+    padding: 0.25rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+  
+  /* Grid extreme compact */
+  .grid {
+    gap: 0.25rem !important;
+  }
+  
+  /* Spacing extreme compact */
+  .space-y-8 > * + *, .space-y-6 > * + *, .space-y-4 > * + * {
+    margin-top: 0.5rem !important;
+  }
+  
+  /* About section extreme fixes */
+  #about .grid.grid-cols-3 {
+    grid-template-columns: 1fr !important;
+    gap: 0.25rem !important;
+  }
+  
+  #about .text-3xl {
+    font-size: 1rem !important;
+  }
+  
+  /* Navigation extreme compact */
+  nav {
+    padding: 0.5rem 0 !important;
+  }
+  
+  .mobile-menu-container button {
+    padding: 0.5rem !important;
+    font-size: 0.75rem !important;
   }
 }
 
