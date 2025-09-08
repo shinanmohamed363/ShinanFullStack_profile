@@ -66,7 +66,7 @@ const Hero: React.FC<HeroProps> = () => {
   ];
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden py-8 sm:py-0">
       {/* Floating Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-20 w-32 h-32 bg-electric-cyan/10 rounded-full blur-3xl animate-float"></div>

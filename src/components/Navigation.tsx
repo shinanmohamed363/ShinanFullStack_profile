@@ -62,7 +62,8 @@ const Navigation: React.FC<NavigationProps> = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const navHeight = 80; // Approximate navigation height
+      // Adjust nav height based on screen size
+      const navHeight = window.innerWidth <= 400 ? 60 : window.innerWidth <= 768 ? 70 : 80;
       const elementPosition = element.offsetTop - navHeight;
       
       window.scrollTo({
