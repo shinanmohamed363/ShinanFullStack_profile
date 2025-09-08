@@ -163,513 +163,249 @@ code {
   min-height: 120px;
 }
 
-/* Mobile optimizations */
-@media (max-width: 768px) {
+/* ========================================
+   FLUID RESPONSIVE SYSTEM - DYNAMIC SCALING
+   ======================================== */
+
+/* Base responsive settings */
+html {
+  font-size: clamp(14px, 2.5vw, 18px);
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #0A0A0F 0%, #1A1A2E 100%);
+  color: white;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* Dynamic section spacing that scales with viewport */
+section {
+  padding: clamp(1rem, 5vw, 5rem) clamp(1rem, 4vw, 2rem);
+  min-height: auto;
+}
+
+/* Fluid typography system */
+h1, .text-xl {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  line-height: 1.3;
+}
+
+h2, .text-5xl, .text-6xl, .text-7xl {
+  font-size: clamp(1.5rem, 6vw, 4rem);
+  line-height: 1.2;
+}
+
+h3, .text-2xl, .text-3xl, .text-4xl {
+  font-size: clamp(1rem, 4vw, 2rem);
+  line-height: 1.3;
+}
+
+.text-lg {
+  font-size: clamp(0.875rem, 2.5vw, 1.125rem);
+}
+
+.text-base {
+  font-size: clamp(0.75rem, 2vw, 1rem);
+}
+
+.text-sm {
+  font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+}
+
+.text-xs {
+  font-size: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+/* Fluid spacing system */
+.space-y-8 > * + * {
+  margin-top: clamp(1rem, 3vw, 2rem);
+}
+
+.space-y-6 > * + * {
+  margin-top: clamp(0.75rem, 2.5vw, 1.5rem);
+}
+
+.space-y-4 > * + * {
+  margin-top: clamp(0.5rem, 2vw, 1rem);
+}
+
+/* Fluid padding and margins */
+.px-4 {
+  padding-left: clamp(0.5rem, 3vw, 1rem);
+  padding-right: clamp(0.5rem, 3vw, 1rem);
+}
+
+.py-4 {
+  padding-top: clamp(0.5rem, 2vw, 1rem);
+  padding-bottom: clamp(0.5rem, 2vw, 1rem);
+}
+
+/* Dynamic glass effect */
+.glass {
+  background: rgba(22, 22, 42, clamp(0.5, 0.7, 0.8));
+  backdrop-filter: blur(clamp(10px, 2vw, 25px));
+  -webkit-backdrop-filter: blur(clamp(10px, 2vw, 25px));
+  border: 1px solid rgba(255, 255, 255, clamp(0.05, 0.1, 0.15));
+  padding: clamp(0.5rem, 3vw, 2rem);
+  border-radius: clamp(0.5rem, 1vw, 1rem);
+}
+
+/* Fluid grid system */
+.grid {
+  display: grid;
+  gap: clamp(0.5rem, 2vw, 2rem);
+}
+
+/* Dynamic container widths */
+.max-w-7xl {
+  max-width: min(90vw, 80rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Fluid buttons */
+.btn-primary, .btn-secondary {
+  padding: clamp(0.5rem, 2vw, 1rem) clamp(1rem, 4vw, 2rem);
+  font-size: clamp(0.75rem, 2vw, 1rem);
+  border-radius: clamp(0.5rem, 1vw, 0.75rem);
+  min-height: clamp(2.5rem, 5vw, 3rem);
+  transition: all 0.3s ease;
+}
+
+/* Responsive navigation */
+nav {
+  padding: clamp(0.5rem, 2vw, 1.5rem) 0;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Touch targets and mobile optimization */
+button {
+  min-height: clamp(2.5rem, 6vw, 3rem);
+  min-width: clamp(2.5rem, 6vw, 3rem);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Fluid profile image */
+.profile-image {
+  width: clamp(4rem, 15vw, 12rem);
+  height: clamp(4rem, 15vw, 12rem);
+}
+
+/* Tech icons responsive */
+.tech-icon {
+  width: clamp(2.5rem, 6vw, 4rem);
+  height: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(1rem, 3vw, 1.5rem);
+}
+
+/* Stats responsive */
+.stat-number {
+  font-size: clamp(1.25rem, 4vw, 2rem);
+}
+
+.stat-label {
+  font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+}
+
+/* Mobile menu responsive */
+.mobile-menu-container {
+  position: relative;
+  z-index: 9998;
+}
+
+.mobile-menu-container .glass-strong {
+  padding: clamp(1rem, 3vw, 1.5rem);
+}
+
+.mobile-menu-container button {
+  padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem);
+  font-size: clamp(0.875rem, 2vw, 1rem);
+}
+
+/* Prevent zoom on form focus */
+input, select, textarea {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+}
+
+/* Hero section specific responsive */
+#hero {
+  min-height: clamp(80vh, 100vh, 100vh);
+  padding: clamp(2rem, 8vw, 6rem) 0 clamp(1rem, 4vw, 3rem) 0;
+}
+
+/* About section responsive grids */
+#about .grid.lg\\:grid-cols-2 {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+}
+
+#about .grid.grid-cols-3 {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr));
+}
+
+/* Skills section responsive */
+#skills .grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+}
+
+/* Projects section responsive */
+#projects .grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+}
+
+/* Experience section responsive */
+#experience .space-y-6 > * + * {
+  margin-top: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+/* Contact section responsive */
+#contact .space-y-6 > * + * {
+  margin-top: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+/* ========================================
+   ENHANCED RESPONSIVE UTILITIES
+   ======================================== */
+
+/* Container queries for modern responsive design */
+@container (max-width: 400px) {
   .glass {
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-  }
-  
-  /* Improve mobile navigation */
-  nav {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-  
-  /* Better touch targets */
-  .touch-manipulation {
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  /* Mobile menu improvements */
-  .mobile-menu-container {
-    position: relative;
-    z-index: 9998;
-  }
-  
-  /* Smooth scrolling on mobile */
-  html {
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  /* Fix mobile viewport */
-  body {
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-  }
-  
-  /* Better button sizing on mobile */
-  button {
-    min-height: 44px;
-    min-width: 44px;
-  }
-  
-  /* Prevent zoom on form focus */
-  input, select, textarea {
-    font-size: 16px;
+    padding: clamp(0.25rem, 2vw, 1rem);
   }
 }
 
-/* Specific fixes for small mobile screens (414x896 and similar) */
+/* Fine-tuned responsive adjustments */
 @media (max-width: 480px) {
-  /* Reduce section padding for more content visibility */
+  /* More aggressive scaling for very small screens */
+  html {
+    font-size: clamp(12px, 2.2vw, 16px);
+  }
+  
   section {
-    padding-top: 60px !important;
-    padding-bottom: 60px !important;
+    padding: clamp(0.75rem, 4vw, 3rem) clamp(0.75rem, 3vw, 1.5rem);
   }
   
-  /* Hero section optimizations */
   #hero {
-    min-height: 100vh;
-    padding: 80px 0 60px 0;
-  }
-  
-  #hero .space-y-8 > * + * {
-    margin-top: 1.5rem;
-  }
-  
-  /* Profile image sizing for small screens */
-  #hero .w-48.h-48 {
-    width: 8rem;
-    height: 8rem;
-  }
-  
-  /* Text sizing adjustments */
-  h1 {
-    font-size: 2.5rem !important;
-    line-height: 1.2;
-  }
-  
-  h2 {
-    font-size: 2rem !important;
-    line-height: 1.2;
-  }
-  
-  h3 {
-    font-size: 1.5rem !important;
-    line-height: 1.3;
-  }
-  
-  /* Hero name text */
-  #hero h2 {
-    font-size: 2.5rem !important;
-  }
-  
-  /* Role text */
-  #hero h3 {
-    font-size: 1.25rem !important;
-    min-height: 2rem !important;
-  }
-  
-  /* Stats grid */
-  #hero .flex.flex-wrap.justify-center.gap-8 {
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-  
-  /* Button adjustments */
-  .btn-primary, .btn-secondary {
-    padding: 12px 24px;
-    font-size: 0.875rem;
-  }
-  
-  /* Tech icons sizing */
-  #hero .w-16.h-16 {
-    width: 3rem;
-    height: 3rem;
-  }
-  
-  /* Grid layouts for small screens */
-  .grid.lg\\:grid-cols-2 {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .grid.md\\:grid-cols-2 {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  .grid.sm\\:grid-cols-2 {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  
-  /* Card spacing adjustments */
-  .glass {
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  /* Text adjustments for readability */
-  .text-xl {
-    font-size: 1.125rem;
-  }
-  
-  .text-lg {
-    font-size: 1rem;
-  }
-  
-  /* Scroll indicator positioning */
-  #hero .absolute.bottom-8 {
-    bottom: 1rem;
-  }
-  
-  /* Skills section improvements */
-  #skills .space-y-6 > * + * {
-    margin-top: 1rem;
-  }
-  
-  /* Projects section improvements */
-  #projects .grid {
-    gap: 1rem;
-  }
-  
-  /* Experience section improvements */
-  #experience .space-y-8 > * + * {
-    margin-top: 1.5rem;
-  }
-  
-  /* Contact section improvements */
-  #contact .space-y-6 > * + * {
-    margin-top: 1rem;
-  }
-  
-  /* CRITICAL: Force all sections to be visible with minimal padding */
-  #about, #skills, #projects, #experience, #contact {
-    padding: 20px 0 !important;
-    min-height: auto !important;
-  }
-  
-  /* About section specific fixes */
-  #about .space-y-8 > * + * {
-    margin-top: 1rem !important;
-  }
-  
-  #about .grid.lg\\:grid-cols-2 {
-    grid-template-columns: 1fr !important;
-    gap: 1rem !important;
-  }
-  
-  #about .text-2xl {
-    font-size: 1.125rem !important;
-  }
-  
-  #about .text-xl {
-    font-size: 1rem !important;
-  }
-  
-  #about .text-lg {
-    font-size: 0.875rem !important;
-  }
-  
-  #about .grid.grid-cols-3 {
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 0.5rem !important;
-  }
-  
-  #about .glass {
-    padding: 0.5rem !important;
-  }
-  
-  /* Projects section ultra compact */
-  #projects .space-y-8 > * + * {
-    margin-top: 1rem !important;
-  }
-  
-  #projects .grid {
-    grid-template-columns: 1fr !important;
-    gap: 0.75rem !important;
-  }
-  
-  #projects .glass {
-    padding: 0.75rem !important;
-  }
-  
-  #projects .text-xl {
-    font-size: 1rem !important;
-  }
-  
-  #projects .text-lg {
-    font-size: 0.875rem !important;
-  }
-  
-  /* Experience section ultra compact */
-  #experience .space-y-8 > * + * {
-    margin-top: 1rem !important;
-  }
-  
-  #experience .space-y-6 > * + * {
-    margin-top: 0.75rem !important;
-  }
-  
-  #experience .glass {
-    padding: 0.75rem !important;
-  }
-  
-  #experience .text-xl {
-    font-size: 1rem !important;
-  }
-  
-  #experience .text-lg {
-    font-size: 0.875rem !important;
+    min-height: clamp(70vh, 90vh, 100vh);
   }
 }
 
-/* Ultra small screens (390x844 and similar) */
-@media (max-width: 400px) {
-  /* Ultra compact layouts for 390px width screens */
-  section {
-    padding-top: 30px !important;
-    padding-bottom: 30px !important;
-  }
-  
-  .px-4 {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-  }
-  
-  /* Hero section ultra compact */
-  #hero {
-    min-height: 100vh;
-    padding: 60px 0 30px 0;
-  }
-  
-  #hero .space-y-4 > * + * {
-    margin-top: 1rem;
-  }
-  
-  /* Hero name ultra small */
-  #hero h2 {
-    font-size: 1.75rem !important;
-    line-height: 1.1;
-  }
-  
-  /* Hello text smaller */
-  #hero h1 {
-    font-size: 1rem !important;
-  }
-  
-  /* Profile image ultra small */
-  #hero .w-32.h-32 {
-    width: 5rem !important;
-    height: 5rem !important;
-  }
-  
-  /* Role text ultra small */
-  #hero h3 {
-    font-size: 1rem !important;
-    min-height: 1.5rem !important;
-  }
-  
-  /* Subtitle ultra small */
-  #hero p {
-    font-size: 0.75rem !important;
-    line-height: 1.3;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-  
-  /* Stats ultra compact */
-  #hero .flex.flex-wrap.justify-center {
-    gap: 0.75rem;
-    margin-top: 1rem;
-  }
-  
-  #hero .text-2xl {
-    font-size: 1.25rem !important;
-  }
-  
-  #hero .text-xs {
-    font-size: 0.625rem !important;
-  }
-  
-  /* Buttons ultra compact */
-  .btn-primary, .btn-secondary {
-    padding: 8px 16px !important;
-    font-size: 0.75rem !important;
-  }
-  
-  /* Tech icons ultra small */
-  #hero .w-12.h-12 {
-    width: 2.5rem !important;
-    height: 2.5rem !important;
-  }
-  
-  #hero .text-lg {
-    font-size: 1rem !important;
-  }
-  
-  /* Section titles */
-  .text-4xl {
-    font-size: 1.875rem !important;
-  }
-  
-  .text-5xl {
-    font-size: 2.25rem !important;
-  }
-  
-  /* Grid ultra compact */
-  .grid {
-    gap: 0.75rem !important;
-  }
-  
-  .glass {
-    padding: 0.75rem !important;
-  }
-  
-  /* Navigation adjustments */
-  nav {
-    padding-top: 0.75rem !important;
-    padding-bottom: 0.75rem !important;
-  }
-  
-  .mobile-menu-container .glass-strong {
-    padding: 1rem !important;
-  }
-  
-  .mobile-menu-container button {
-    padding: 0.75rem 1rem !important;
-    font-size: 0.875rem !important;
-  }
-}
-
-/* Extra small screens - 375x667 iPhone SE and similar */
-@media (max-width: 375px), (max-height: 667px) and (max-width: 375px) {
-  /* EXTREME compact layouts for iPhone SE */
-  section {
-    padding-top: 15px !important;
-    padding-bottom: 15px !important;
-  }
-  
-  .px-4 {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-  
-  /* Hero ultra compact */
-  #hero {
-    padding: 40px 0 20px 0;
-    min-height: 90vh;
-  }
-  
-  /* Hero name for very small screens */
-  #hero h2 {
-    font-size: 1.25rem !important;
-  }
-  
-  /* Profile image for very small screens */
-  #hero .w-32.h-32 {
-    width: 3.5rem !important;
-    height: 3.5rem !important;
-  }
-  
-  /* Button stack on very small screens */
-  #hero .flex.flex-col.sm\\:flex-row {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  /* Ultra small text */
-  #hero p {
-    font-size: 0.625rem !important;
-    line-height: 1.2;
-  }
-  
-  .btn-primary, .btn-secondary {
-    padding: 4px 8px !important;
-    font-size: 0.625rem !important;
-  }
-  
-  /* CRITICAL: Extreme compression for all other sections */
-  #about, #skills, #projects, #experience, #contact {
-    padding: 10px 0 !important;
-  }
-  
-  /* Section titles extreme small */
-  .text-4xl, .text-5xl {
-    font-size: 1.25rem !important;
-    line-height: 1.2;
-    margin-bottom: 0.5rem !important;
-  }
-  
-  /* All text sizes extreme small */
-  .text-2xl {
-    font-size: 1rem !important;
-  }
-  
-  .text-xl {
-    font-size: 0.875rem !important;
-  }
-  
-  .text-lg {
-    font-size: 0.75rem !important;
-  }
-  
-  .text-base {
-    font-size: 0.75rem !important;
-  }
-  
-  .text-sm {
-    font-size: 0.625rem !important;
-  }
-  
-  /* Glass cards extreme compact */
-  .glass {
-    padding: 0.25rem !important;
-    margin-bottom: 0.25rem !important;
-  }
-  
-  /* Grid extreme compact */
-  .grid {
-    gap: 0.25rem !important;
-  }
-  
-  /* Spacing extreme compact */
-  .space-y-8 > * + *, .space-y-6 > * + *, .space-y-4 > * + * {
-    margin-top: 0.5rem !important;
-  }
-  
-  /* About section extreme fixes */
-  #about .grid.grid-cols-3 {
-    grid-template-columns: 1fr !important;
-    gap: 0.25rem !important;
-  }
-  
-  #about .text-3xl {
-    font-size: 1rem !important;
-  }
-  
-  /* Navigation extreme compact */
-  nav {
-    padding: 0.5rem 0 !important;
-  }
-  
-  .mobile-menu-container button {
-    padding: 0.5rem !important;
-    font-size: 0.75rem !important;
-  }
-}
-
-/* Landscape orientation fixes for mobile */
+/* Landscape orientation optimization */
 @media (max-height: 500px) and (orientation: landscape) {
   #hero {
-    min-height: auto;
-    padding: 60px 0 40px 0;
-  }
-  
-  #hero .space-y-8 > * + * {
-    margin-top: 1rem;
-  }
-  
-  #hero .w-48.h-48 {
-    width: 6rem;
-    height: 6rem;
+    min-height: 90vh;
+    padding: clamp(1rem, 4vh, 3rem) 0;
   }
   
   section {
-    padding-top: 40px !important;
-    padding-bottom: 40px !important;
+    padding: clamp(1rem, 3vh, 2rem) clamp(1rem, 3vw, 1.5rem);
   }
 }

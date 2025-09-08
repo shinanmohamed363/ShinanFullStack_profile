@@ -81,7 +81,7 @@ const Hero: React.FC<HeroProps> = () => {
           <div className="flex justify-center mb-6 sm:mb-8">
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-electric-cyan to-electric-purple rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-glow"></div>
-              <div className="relative w-32 h-32 xs:w-40 xs:h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden border-2 border-white/20">
+              <div className="relative profile-image rounded-full overflow-hidden border-2 border-white/20">
                 <img
                   src="/profile.jpg"
                   alt="Najimudeen Mohammed Sanan - Full-Stack Software Engineer"
@@ -101,68 +101,66 @@ const Hero: React.FC<HeroProps> = () => {
             </h1>
             
             {/* Name */}
-            <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gradient font-poppins animate-fadeInUp leading-tight" style={{animationDelay: '0.2s'}}>
+            <h2 className="font-bold text-gradient font-poppins animate-fadeInUp leading-tight" style={{animationDelay: '0.2s'}}>
               Najimudeen Sanan
             </h2>
             
             {/* Typing Animation Role */}
-            <div className="h-16 sm:h-20 flex items-center justify-center px-4">
-              <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-white font-inter min-h-[2rem] sm:min-h-[3rem] text-center">
+            <div className="flex items-center justify-center px-4">
+              <h3 className="font-semibold text-white font-inter text-center">
                 {displayText}
-                <span className={`inline-block w-0.5 sm:w-1 h-6 sm:h-8 bg-electric-cyan ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity`}></span>
+                <span className={`inline-block w-0.5 bg-electric-cyan ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity`} style={{height: 'clamp(1rem, 3vw, 2rem)'}}></span>
               </h3>
             </div>
 
             {/* Subtitle */}
-            <p className="text-sm xs:text-base sm:text-lg md:text-xl text-light-gray max-w-3xl mx-auto animate-fadeInUp px-4 text-center leading-relaxed" style={{animationDelay: '0.6s'}}>
-              2.8+ Years Experience Building Scalable Solutions<br className="sm:hidden"/>
-              <span className="hidden sm:inline"> • </span>
-              <span className="sm:hidden"><br/></span>Expert in MERN Stack, Python & AI/ML
+            <p className="text-light-gray max-w-3xl mx-auto animate-fadeInUp px-4 text-center leading-relaxed" style={{animationDelay: '0.6s'}}>
+              2.8+ Years Experience Building Scalable Solutions • Expert in MERN Stack, Python & AI/ML
             </p>
           </div>
 
           {/* Stats */}
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mt-8 sm:mt-12 animate-fadeInUp px-4" style={{animationDelay: '0.8s'}}>
-            <div className="text-center min-w-[80px]">
-              <div className="text-2xl sm:text-3xl font-bold text-gradient-green">2.8+</div>
-              <div className="text-light-gray text-xs sm:text-sm">Years Experience</div>
+          <div className="flex flex-wrap justify-center animate-fadeInUp px-4" style={{animationDelay: '0.8s', gap: 'clamp(1rem, 3vw, 2rem)', marginTop: 'clamp(1rem, 4vw, 3rem)'}}>
+            <div className="text-center">
+              <div className="stat-number font-bold text-gradient-green">2.8+</div>
+              <div className="stat-label text-light-gray">Years Experience</div>
             </div>
-            <div className="text-center min-w-[80px]">
-              <div className="text-2xl sm:text-3xl font-bold text-gradient-green">15+</div>
-              <div className="text-light-gray text-xs sm:text-sm">Projects Delivered</div>
+            <div className="text-center">
+              <div className="stat-number font-bold text-gradient-green">15+</div>
+              <div className="stat-label text-light-gray">Projects Delivered</div>
             </div>
-            <div className="text-center min-w-[80px]">
-              <div className="text-2xl sm:text-3xl font-bold text-gradient-green">99.9%</div>
-              <div className="text-light-gray text-xs sm:text-sm">Uptime</div>
+            <div className="text-center">
+              <div className="stat-number font-bold text-gradient-green">99.9%</div>
+              <div className="stat-label text-light-gray">Uptime</div>
             </div>
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mt-8 sm:mt-12 animate-fadeInUp px-4" style={{animationDelay: '1s'}}>
+          <div className="flex flex-col sm:flex-row justify-center animate-fadeInUp px-4" style={{animationDelay: '1s', gap: 'clamp(0.75rem, 2vw, 1.5rem)', marginTop: 'clamp(1rem, 4vw, 3rem)'}}>
             <button
               onClick={() => scrollToSection('projects')}
-              className="btn-primary hover-glow text-sm sm:text-base py-3 px-6"
+              className="btn-primary hover-glow"
             >
               View My Projects
             </button>
             <button
               onClick={downloadResume}
-              className="btn-secondary hover-glow text-sm sm:text-base py-3 px-6"
+              className="btn-secondary hover-glow"
             >
               Download Resume
             </button>
           </div>
 
           {/* Tech Stack Icons */}
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-6 mt-8 sm:mt-16 animate-fadeInUp px-4" style={{animationDelay: '1.2s'}}>
+          <div className="flex flex-wrap justify-center animate-fadeInUp px-4" style={{animationDelay: '1.2s', gap: 'clamp(0.75rem, 2vw, 1.5rem)', marginTop: 'clamp(1rem, 4vw, 4rem)'}}>
             {techIcons.map((tech, index) => (
               <div
                 key={tech.name}
-                className="glass rounded-full w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center hover-glow cursor-pointer group"
+                className="glass rounded-full tech-icon flex items-center justify-center hover-glow cursor-pointer group"
                 style={{animationDelay: tech.delay}}
                 title={tech.name}
               >
-                <span className="text-lg sm:text-2xl group-hover:scale-125 transition-transform duration-300">
+                <span className="group-hover:scale-125 transition-transform duration-300">
                   {tech.icon}
                 </span>
               </div>
